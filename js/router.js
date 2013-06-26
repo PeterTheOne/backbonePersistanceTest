@@ -7,7 +7,8 @@ window.router = new (Backbone.Router.extend({
     routes: {
         '': 'index',
         'fetchOnePants/:id': 'fetchOnePants',
-        'addOnePants/:name': 'addOnePants'
+        'addOnePants/:name': 'addOnePants',
+        'updateOnePants/:id/:name': 'updateOnePants'
     },
 
     index: function() {
@@ -28,6 +29,12 @@ window.router = new (Backbone.Router.extend({
         var pants = new Pants({name: name});
 
         pants.save();
+    },
+
+    updateOnePants: function(id, name) {
+        var pants = new Pants({id: id});
+
+        pants.save({name: name});
     }
 
 }));
